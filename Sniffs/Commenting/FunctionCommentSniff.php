@@ -509,11 +509,12 @@ class A24StudioCS_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSnif
                         $this->currentFile->addError($error, $errorPos);
                     }
                 } else {
-                    $docBlock = (get_class($this) === 'PEAR_Sniffs_Commenting_FileCommentSniff') ? 'file' : 'class';
-                    $error = "Content missing for @author tag in $docBlock comment";
+                    $error = "Content missing for @author tag in function comment";
                     $this->currentFile->addError($error, $errorPos);
                 }
             }
+        } else {
+             $this->currentFile->addError("Missing @authors tag for function comment.", $commentStart);
         }
     }
     
