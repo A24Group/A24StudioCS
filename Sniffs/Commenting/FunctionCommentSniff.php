@@ -194,7 +194,7 @@ class A24StudioCS_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSnif
         $this->processParams($commentStart);
         $this->processReturn($commentStart, $commentEnd);
         $this->processThrows($commentStart);
-    
+
         // No extra newline before short description.
         $short        = $comment->getShortComment();
         $newlineCount = 0;
@@ -234,10 +234,10 @@ class A24StudioCS_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSnif
                 $short = rtrim($short, $phpcsFile->eolChar.' ');
             }
         }
-        
+
         // parse and ensure author tags are present
         $this->processAuthors($commentTokenAsString, $phpcsFile, $commentStart);
-        
+
         // check that each method has an @since tag
         if (!in_array('since', $params)) {
             $phpcsFile->addError("Each method must define an since tag.", ($commentStart + $newlineCount));
@@ -303,6 +303,13 @@ class A24StudioCS_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSnif
                 $error    = '@return tag is empty in function comment';
                 $errorPos = ($commentStart + $this->commentParser->getReturn()->getLine());
                 $this->currentFile->addError($error, $errorPos);
+            } else {
+                $index = array_keys($this->commentParser->getTagOrders(), 'return');
+                $iTotalTags = array_keys($this->commentParser->getTagOrders());
+
+                if ($index[0] !== (count($iTotalTags) - 1)) {
+                    $this->currentFile->addError('Expected @return to be last tag in function block', $errorPos);
+                }
             }
         }
 
@@ -334,11 +341,11 @@ class A24StudioCS_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSnif
             }
 
             // Parameters must appear immediately after the comment.
-            if ($params[0]->getOrder() !== 2) {
-                $error    = 'Parameters must appear immediately after the comment';
-                $errorPos = ($params[0]->getLine() + $commentStart);
-                $this->currentFile->addError($error, $errorPos);
-            }
+//             if ($params[0]->getOrder() !== 2) {
+//                 $error    = 'Parameters must appear immediately after the comment';
+//                 $errorPos = ($params[0]->getLine() + $commentStart);
+//                 $this->currentFile->addError($error, $errorPos);
+//             }
 
             $previousParam      = null;
             $spaceBeforeVar     = 10000;
@@ -478,7 +485,7 @@ class A24StudioCS_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSnif
      * the errorPos for each element separately
      *
      * @param string $comment   The comment being parse
-     * @param string $phpcsFile The phpcs file  
+     * @param string $phpcsFile The phpcs file
      * @param int $commentStart The position in the stack where
      *                          the comment started.
      *
@@ -494,9 +501,9 @@ class A24StudioCS_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSnif
             $phpcsFile->addError($e->getMessage(), $line);
             return;
         }
-        
+
         $authors = $commentParser->getAuthors();
-        
+
         // Report missing return.
         if (empty($authors) === false) {
             foreach ($authors as $author) {
@@ -517,7 +524,7 @@ class A24StudioCS_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSnif
              $this->currentFile->addError("Missing @authors tag for function comment.", $commentStart);
         }
     }
-    
+
 }//end class
 
 ?>

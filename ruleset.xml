@@ -11,27 +11,49 @@
  <!--
     Start by including PSR standards
  -->
- <rule ref="PSR"/>
+ <rule ref="PSR">
+    <exclude name="Generic.Files.LineLength"/>
+ </rule>
  
  <!--
     Add generic and pear standards we wish to reuse
  -->
- <rule ref="Generic.PHP.DisallowShortOpenTag"/>
  <rule ref="Generic.Commenting.Todo"/>
+ <rule ref="Generic.NamingConventions.UpperCaseConstantName"/>
+ <rule ref="Generic.PHP.DisallowShortOpenTag"/>
+ <rule ref="Generic.PHP.LowerCaseConstant"/>
+ 
  <rule ref="PEAR.Classes.ClassDeclaration"/>
- <rule ref="PEAR.Functions.FunctionCallSignature"/>
+ 
  <rule ref="PEAR.Functions.ValidDefaultValue"/>
- <rule ref="PEAR.Classes.ClassDeclaration"/>
  <rule ref="PEAR.WhiteSpace.ScopeIndent"/>
+ 
+ <rule ref="Squiz.Commenting.DocCommentAlignment"/>
+ <rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>
  <rule ref="Squiz.Functions.GlobalFunction"/>
- <rule ref="Zend.NamingConventions.ValidVariableName"/>
+ <rule ref="Squiz.WhiteSpace.MemberVarSpacing"/>
+ <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
  
  <!--
     Add custom sniffs
  -->
- <rule ref="A24StudioCS.WhiteSpace.ScopeClosingBrace"/>
+ 
  <rule ref="A24StudioCS.Commenting.FunctionComment"/>
  <rule ref="A24StudioCS.Commenting.FileComment"/>
  <rule ref="A24StudioCS.Commenting.InlineComment"/>
+ <rule ref="A24StudioCS.Commenting.VariableComment"/>
+ <rule ref="A24StudioCS.NamingConventions.ValidVariableName"/>
+ <rule ref="A24StudioCS.WhiteSpace.FunctionSpacing"/>
+ <rule ref="A24StudioCS.WhiteSpace.ScopeClosingBrace"/>
+ 
+ <rule ref="A24StudioCS.Functions.FunctionCallSignature"/>
+ 
+ <rule ref="A24StudioCS.Files.LineLength">
+    <properties>
+        <property name="lineLimit" value="80"/>
+        <property name="absoluteLineLimit" value="120"/>
+        <property name="ignoreTagLineLength" value="@expectedExceptionCode|@expectedException"/>
+    </properties>
+ </rule>
  
 </ruleset>
