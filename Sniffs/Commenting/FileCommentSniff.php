@@ -38,6 +38,7 @@ if (class_exists('PHP_CodeSniffer_CommentParser_ClassCommentParser', true) === f
  * @author    Greg Sherwood <gsherwood@squiz.net>
  * @author    Marc McIntyre <mmcintyre@squiz.net>
  * @author    Jaco Nel <jaco.nel@a24group.com>
+ * @author    Neil Nienaber <neil.nienaber@a24group.com>
  * @copyright 2006 Squiz Pty Ltd (ABN 77 084 670 600)
  * @license   http://matrix.squiz.net/developer/tools/php_cs/licence BSD Licence
  * @version   Release: 1.2.1
@@ -312,7 +313,7 @@ class A24StudioCS_Sniffs_Commenting_FileCommentSniff implements PHP_CodeSniffer_
             $this->currentFile->addWarning($error, $commentEnd);
         }
     }
-    
+
     /**
      * Processes each required or optional tag.
      *
@@ -380,7 +381,7 @@ class A24StudioCS_Sniffs_Commenting_FileCommentSniff implements PHP_CodeSniffer_
                     }
                 }
             }
-            
+
             // Check tag order.
             if ($foundIndexes[0] > $orderIndex) {
                 $orderIndex = $foundIndexes[0];
@@ -431,28 +432,6 @@ class A24StudioCS_Sniffs_Commenting_FileCommentSniff implements PHP_CodeSniffer_
                             $this->currentFile, $commentStart, $docBlock
                     );
                 }
-            }
-        }
-
-        foreach ($indentation as $indentInfo) {
-            if ($indentInfo['space'] !== 1
-                    && $indentInfo['space'] !== ($longestTag + 1)
-            ) {
-                $expected = (($longestTag - strlen($indentInfo['tag'])) + 1);
-                $space = ($indentInfo['space'] - strlen($indentInfo['tag']));
-                $error = "@$indentInfo[tag] tag comment indented incorrectly. ";
-                $error .= "Expected $expected spaces but found $space.";
-
-                $getTagMethod = 'get' . ucfirst($indentInfo['tag']);
-
-                if ($this->tags[$indentInfo['tag']]['allow_multiple'] === true) {
-                    $line = $indentInfo['line'];
-                } else {
-                    $tagElem = $this->commentParser->$getTagMethod();
-                    $line = $tagElem->getLine();
-                }
-
-                $this->currentFile->addError($error, ($commentStart + $line));
             }
         }
     }
@@ -575,7 +554,7 @@ class A24StudioCS_Sniffs_Commenting_FileCommentSniff implements PHP_CodeSniffer_
             }
         }
     }
-    
+
     /**
      * Process the author tag(s) that this header comment has.
      *
