@@ -306,7 +306,7 @@ class A24StudioCS_Sniffs_Commenting_FunctionCommentSniff implements PHP_CodeSnif
             } else {
                 $index = array_keys($this->commentParser->getTagOrders(), 'return');
                 $iTotalTags = array_keys($this->commentParser->getTagOrders());
-
+                $errorPos = ($commentStart + $this->commentParser->getReturn()->getLine());
                 if ($index[0] !== (count($iTotalTags) - 1)) {
                     $this->currentFile->addError('Expected @return to be last tag in function block', $errorPos);
                 }
