@@ -13,6 +13,7 @@
  -->
  <rule ref="PSR">
     <exclude name="Generic.Files.LineLength"/>
+    <exclude name="Generic.WhiteSpace.ScopeIndent"/>
  </rule>
  
  <!--
@@ -26,7 +27,6 @@
  <rule ref="PEAR.Classes.ClassDeclaration"/>
  
  <rule ref="PEAR.Functions.ValidDefaultValue"/>
- <rule ref="PEAR.WhiteSpace.ScopeIndent"/>
  
  <rule ref="Squiz.Commenting.DocCommentAlignment"/>
  <rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>
@@ -45,6 +45,7 @@
  <rule ref="A24StudioCS.NamingConventions.ValidVariableName"/>
  <rule ref="A24StudioCS.WhiteSpace.FunctionSpacing"/>
  <rule ref="A24StudioCS.WhiteSpace.ScopeClosingBrace"/>
+ <rule ref="A24StudioCS.WhiteSpace.ScopeIndent"/>
  
  <rule ref="A24StudioCS.Functions.FunctionCallSignature"/>
  

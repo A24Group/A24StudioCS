@@ -113,12 +113,11 @@ class A24StudioCS_Sniffs_WhiteSpace_ScopeClosingBraceSniff implements PHP_CodeSn
         $braceIndent   = $tokens[$scopeEnd]['column'];
         $isBreakCloser = ($tokens[$scopeEnd]['code'] === T_BREAK);
         if (in_array($tokens[$stackPtr]['code'], array(T_CASE, T_DEFAULT)) === true
-            && $isBreakCloser === true
         ) {
-            // BREAK statements should be indented 4 spaces from the
+            // BREAK AND Return statements should be indented 4 spaces from the
             // CASE or DEFAULT statement.
             if ($braceIndent !== ($startColumn + 4)) {
-                $error = 'Break statement indented incorrectly; expected '.($startColumn).' tab, found '.($braceIndent - 1);
+                $error = 'Break statement indented incorrectly; expected '.($startColumn + 3).' spaces, found '.($braceIndent - 1);
                 $phpcsFile->addError($error, $scopeEnd);
             }
         } else {
