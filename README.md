@@ -1,5 +1,7 @@
 # A24Studio Code Sniffer Coding Standards
 
+Codesniffer is a tool used to detect coding standard violations in Php Projects. 
+
 This project contains the coding standard rule to be used in PHP Code sniffer for any
 project owned by A24Studio.
 
@@ -44,3 +46,20 @@ edit the config file in your git hooks, update the required line to:
 ```bash
 PHPCS_CODING_STANDARD=A24StudioCS
 ```
+
+# Code sniffer as a git pre-commit hook
+
+## Installation
+
+See instructions at https://github.com/s0enke/git-hooks/tree/master/phpcs-pre-commit. Please note that you will have to ensure that the pre-commit script is executable (`chmod +x` normally does the trick)
+
+You will need to add this script to each project you wish to have tested against the PSR standards.
+
+You will also need to make the following change to the config file to tell the pre-commit hook to use the PSR standards installed on the pc.
+```
+PHPCS_CODING_STANDARD=PSR
+```
+
+## Usage
+
+Now when ever you attempt to commit, the files you changed will be evaluated agains codesniffer. If any CS violations are found, the commit will terminate and these violations will be displayed to you. When using git-cola, these violations will display in the Command Output tab.
