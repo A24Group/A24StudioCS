@@ -53,11 +53,11 @@ PHPCS_CODING_STANDARD=A24StudioCS
 
 See instructions at https://github.com/s0enke/git-hooks/tree/master/phpcs-pre-commit. Please note that you will have to ensure that the pre-commit script is executable (`chmod +x` normally does the trick)
 
-You will need to add this script to each project you wish to have tested against the PSR standards.
+You will need to add this script to each project you wish to have tested against the standards.
 
 You will also need to make the following change to the config file to tell the pre-commit hook to use the PSR standards installed on the pc.
 ```
-PHPCS_CODING_STANDARD=PSR
+PHPCS_CODING_STANDARD=A24StudioCS
 ```
 
 ## Usage
