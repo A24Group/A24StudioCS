@@ -40,6 +40,8 @@ sudo git clone git@github.com:jaconel/A24StudioCS.git
 ```bash
 sudo phpcs --config-set default_standard A24StudioCS
 ```
+You will probably get an error of a file that does not exist.  Create the directory and file and try again.
+
  * You will also need to update your pre-commit hooks to use the new standards that have been created
 edit the config file in your git hooks, update the required line to:
 
