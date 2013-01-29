@@ -29,14 +29,12 @@
  <rule ref="PEAR.Functions.ValidDefaultValue"/>
  
  <rule ref="Squiz.Commenting.DocCommentAlignment"/>
- <rule ref="Squiz.Commenting.FunctionCommentThrowTag"/>
  <rule ref="Squiz.Functions.GlobalFunction"/>
  <rule ref="Squiz.WhiteSpace.MemberVarSpacing"/>
  <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace"/>
  
- <!--
-    Add custom sniffs
- -->
+ 
+<!--     Add custom sniffs -->
  
  <rule ref="A24StudioCS.Commenting.FunctionComment"/>
  <rule ref="A24StudioCS.Commenting.FileComment"/>
@@ -46,6 +44,8 @@
  <rule ref="A24StudioCS.WhiteSpace.FunctionSpacing"/>
  <rule ref="A24StudioCS.WhiteSpace.ScopeClosingBrace"/>
  <rule ref="A24StudioCS.WhiteSpace.ScopeIndent"/>
+ <rule ref="A24StudioCS.Commenting.FunctionCommentThrowTag"/>
+ <rule ref="A24StudioCS.Classes.ClassImport"/>
  
  <rule ref="A24StudioCS.Functions.FunctionCallSignature"/>
  
