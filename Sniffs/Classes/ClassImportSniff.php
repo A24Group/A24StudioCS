@@ -7,6 +7,7 @@
  * @category  PHP
  * @package   PHP_CodeSniffer
  * @author    Alec Erasmus <alec.erasmus@a24group.com>
+ * @since     28 January 2013
  */
 
 /**
@@ -17,6 +18,7 @@
  * @category  PHP
  * @package   PHP_CodeSniffer
  * @author    Alec Erasmus <alec.erasmus@a24group.com>
+ * @since     28 January 2013
  */
 class A24StudioCS_Sniffs_Classes_ClassImportSniff implements PHP_CodeSniffer_Sniff
 {
@@ -101,9 +103,10 @@ class A24StudioCS_Sniffs_Classes_ClassImportSniff implements PHP_CodeSniffer_Sni
             // If a white space token is found
             if ($arrLineToken['type'] == 'T_WHITESPACE') {
                 // If there is more than one white space next to each other
-                if (strlen($arrLineToken['content']) == 2) {
-                    $error = 'Found 2 white spaces in "use" statement';
-                    $phpcsFile->addError($error, $stackPtr, 'WhiteSpace');
+                if (strlen($arrLineToken['content']) != 1) {
+                    $error = 'Found %s white spaces in "use" statement';
+                    $data  = array(strlen($arrLineToken['content']));
+                    $phpcsFile->addError($error, $stackPtr, 'WhiteSpace', $data);
                 }
             }
             // Get the class that in imported in the use statements
@@ -168,7 +171,6 @@ class A24StudioCS_Sniffs_Classes_ClassImportSniff implements PHP_CodeSniffer_Sni
             self::$iLastOccurrence = null;
         }
     }
-
 
 }//end class
 
