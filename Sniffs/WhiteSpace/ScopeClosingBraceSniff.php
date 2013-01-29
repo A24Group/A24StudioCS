@@ -31,7 +31,6 @@
 class A24StudioCS_Sniffs_WhiteSpace_ScopeClosingBraceSniff implements PHP_CodeSniffer_Sniff
 {
 
-
     /**
      * Returns an array of tokens this test wants to listen for.
      *
@@ -110,7 +109,7 @@ class A24StudioCS_Sniffs_WhiteSpace_ScopeClosingBraceSniff implements PHP_CodeSn
         }
 
         // Check now that the closing brace is lined up correctly.
-        $braceIndent   = $tokens[$scopeEnd]['column'];
+        $braceIndent = $tokens[$scopeEnd]['column'];
         $isBreakCloser = ($tokens[$scopeEnd]['code'] === T_BREAK);
         if (in_array($tokens[$stackPtr]['code'], array(T_CASE, T_DEFAULT)) === true
         ) {
