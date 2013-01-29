@@ -134,8 +134,8 @@ class A24StudioCS_Sniffs_Classes_ClassImportSniff implements PHP_CodeSniffer_Sni
         // Set the last occurrence of the use statement
         $arrUserStatement = $tokens[$stackPtr];
         if (!self::$iLastOccurrence) {
-            $this->clearStaticVariables($iCount);
             self::$iLastOccurrence = $arrUserStatement['line'];
+            $this->clearStaticVariables($iCount);
             return;
         }
 
