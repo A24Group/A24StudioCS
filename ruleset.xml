@@ -46,6 +46,7 @@
  <rule ref="A24StudioCS.WhiteSpace.ScopeIndent"/>
  <rule ref="A24StudioCS.Commenting.FunctionCommentThrowTag"/>
  <rule ref="A24StudioCS.Classes.ClassImport"/>
+ <rule ref="A24StudioCS.Commenting.NamespaceComment"/>
  
  <rule ref="A24StudioCS.Functions.FunctionCallSignature"/>
  
