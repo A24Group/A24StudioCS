@@ -110,6 +110,7 @@ class A24StudioCS_Sniffs_Classes_ClassImportSniff implements PHP_CodeSniffer_Sni
                 // If there is more than one white space next to each other
                 if (strlen($arrLineToken['content']) != 1) {
                     if ($arrLineToken['line'] > $arrClass['line']) {
+                        $this->clearStaticVariables($iCount);
                         return;
                     }
                     $error = 'Found %s white spaces in "use" statement';
