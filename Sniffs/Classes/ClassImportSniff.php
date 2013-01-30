@@ -23,11 +23,11 @@
 class A24StudioCS_Sniffs_Classes_ClassImportSniff implements PHP_CodeSniffer_Sniff
 {
 
-	/**
-	 * The line number of the last occurens of the token.
-	 *
-	 * @var int
-	 */
+    /**
+     * The line number of the last occurens of the token.
+     *
+     * @var int
+     */
     static $iLastOccurrence;
 
     /**
@@ -75,6 +75,7 @@ class A24StudioCS_Sniffs_Classes_ClassImportSniff implements PHP_CodeSniffer_Sni
         $iCount = 0;
         $arrWhiteSpaces = array();
         $sContent = '';
+        $arrClass = array();
 
         /*
             Check the blank lines
@@ -97,13 +98,20 @@ class A24StudioCS_Sniffs_Classes_ClassImportSniff implements PHP_CodeSniffer_Sni
             if ($sValue['line'] == $tokens[$stackPtr]['line']) {
                 $arrLineTokens[] = $sValue;
             }
+            if ($sValue['type'] == 'T_CLASS') {
+                $arrClass = $sValue;
+            }
         }
+
         // Loop through the tokens on a single line
         foreach ($arrLineTokens as $arrLineToken) {
             // If a white space token is found
             if ($arrLineToken['type'] == 'T_WHITESPACE') {
                 // If there is more than one white space next to each other
                 if (strlen($arrLineToken['content']) != 1) {
+                    if ($arrLineToken['line'] > $arrClass['line']) {
+                        return;
+                    }
                     $error = 'Found %s white spaces in "use" statement';
                     $data  = array(strlen($arrLineToken['content']));
                     $phpcsFile->addError($error, $stackPtr, 'WhiteSpace', $data);
