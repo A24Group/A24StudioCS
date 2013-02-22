@@ -32,7 +32,7 @@ OR
 To install the coding standards, do the following:
 ```bash
 cd /usr/share/php/PHP/CodeSniffer/Standards
-sudo git clone git@github.com:jaconel/A24StudioCS.git
+sudo git clone git@github.com:A24Group/A24StudioCS.git
 ```
 ## You must then
  * Set the A24Studio coding standards as the defaults, execute the following code:
