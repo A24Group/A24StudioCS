@@ -49,7 +49,7 @@ You will probably get an error of a file that does not exist.  Create the direct
 PHPCS_CODING_STANDARD=A24StudioCS
 ```
 
-`A24StudioCS` is the default standard thatwill be used. To use a custom ruleset the `PHPCS_CODING_STANDARD`
+`A24StudioCS` is the default standard that will be used. To use a custom ruleset the `PHPCS_CODING_STANDARD`
 needs to point to the custom ruleset of your project. The custom ruleset should then in turn point to the respective standard you want to use.
 
 ```bash
