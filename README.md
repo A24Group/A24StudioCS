@@ -50,8 +50,9 @@ PHPCS_CODING_STANDARD=A24StudioCS
 ```
 
 `A24StudioCS` is the default standard that will be used. To use a custom ruleset the `PHPCS_CODING_STANDARD`
-needs to point to the custom ruleset of your project. The custom ruleset should then in turn point to the respective standard you want to use.
+needs to point to the custom ruleset of your project(The path is related to the root of the project). The custom ruleset should then in turn point to the respective standard you want to use.
 
+Example of ruleset:
 ```bash
 <?xml version="1.0"?>
 <ruleset name="Triage">
@@ -71,7 +72,28 @@ needs to point to the custom ruleset of your project. The custom ruleset should 
 
 </ruleset>
 ```
+Example of the config located in `.git/hooks/config`
 
+```bash
+# path to phpcs "binary"
+PHPCS_BIN=/usr/bin/phpcs
+
+# the coding standard, you can also specify a path to your own standard here 
+# e. g. /path/to/my/standard/dir/
+PHPCS_CODING_STANDARD=phpcs-ruleset.xml
+
+# comma-separated list of file patterns being ignored
+PHPCS_IGNORE=
+
+# egrep compatible pattern of  files to be checked
+PHPCS_FILE_PATTERN="\.(php)$"
+
+# ignore warnings
+PHPCS_IGNORE_WARNINGS=1
+
+# encoding
+PHPCS_ENCODING=utf-8
+```
 # Code sniffer as a git pre-commit hook
 
 ## Installation
