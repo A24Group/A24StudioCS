@@ -42,13 +42,58 @@ sudo phpcs --config-set default_standard A24StudioCS
 ```
 You will probably get an error of a file that does not exist.  Create the directory and file and try again.
 
- * You will also need to update your pre-commit hooks to use the new standards that have been created
-edit the **config file** (.git/hooks/config), not pre-commit file (.git/hooks/pre-commit), in your git hooks, update the required line to:
+ * You will also need to update your pre-commit hooks to use the new standards that have been created.
+ Edit the **config file** (.git/hooks/config), not pre-commit file (.git/hooks/pre-commit), in your git hooks, update the required line to:
 
 ```bash
 PHPCS_CODING_STANDARD=A24StudioCS
 ```
 
+`A24StudioCS` is the default standard that will be used. To use a custom ruleset the `PHPCS_CODING_STANDARD`
+needs to point to the custom ruleset of your project(The path is related to the root of the project). The custom ruleset should then in turn point to the respective standard you want to use.
+
+Example of ruleset:
+```bash
+<?xml version="1.0"?>
+<ruleset name="Triage">
+
+<!--
+    The name attribute of the ruleset tag is displayed
+    when running PHP_CodeSniffer with the -v command line
+    argument.
+-->
+<description>Triage Coding standards</description>
+
+<!-- Patterns that needs to be ignored when running phpcs on the project. -->
+<exclude-pattern>*.xml</exclude-pattern>
+
+<!-- Include our custom standards -->
+<rule ref="A24StudioCS"/>
+
+</ruleset>
+```
+Example of the config located in `.git/hooks/config`
+
+```bash
+# path to phpcs "binary"
+PHPCS_BIN=/usr/bin/phpcs
+
+# the coding standard, you can also specify a path to your own standard here 
+# e. g. /path/to/my/standard/dir/
+PHPCS_CODING_STANDARD=phpcs-ruleset.xml
+
+# comma-separated list of file patterns being ignored
+PHPCS_IGNORE=
+
+# egrep compatible pattern of  files to be checked
+PHPCS_FILE_PATTERN="\.(php)$"
+
+# ignore warnings
+PHPCS_IGNORE_WARNINGS=1
+
+# encoding
+PHPCS_ENCODING=utf-8
+```
 # Code sniffer as a git pre-commit hook
 
 ## Installation
@@ -58,6 +103,9 @@ See instructions at https://github.com/s0enke/git-hooks/tree/master/phpcs-pre-co
 You will need to add this script to each project you wish to have tested against the standards.
 
 You will also need to make the following change to the config file to tell the pre-commit hook to use the PSR standards installed on the pc.
+
+**`A24StudioCS` will be the default standard (To use a custom standard please [read](https://github.com/A24Group/A24StudioCS#you-must-then)).**
+
 ```
 PHPCS_CODING_STANDARD=A24StudioCS
 ```
