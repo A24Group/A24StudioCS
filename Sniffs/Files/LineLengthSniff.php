@@ -136,6 +136,16 @@ class A24StudioCS_Sniffs_Files_LineLengthSniff implements PHP_CodeSniffer_Sniff
             }
         }
 
+        //@author    Leon v Niekerk <leon.vanNiekerk@a24group.com>
+        //Exclude lines that starts with specific words from the line limits
+        //This is a pipe delimited string
+        $arrExcludeStartsWith = explode('|', $this->ignoreStartsWithLineLength);
+        foreach ($arrExcludeStartsWith as $sSingleStart) {
+            if (preg_match('|^' . $sSingleStart . '\b|', $lineContent) !== 0) {
+                return;
+            }
+        }
+
 
         if (PHP_CODESNIFFER_ENCODING !== 'iso-8859-1') {
             // Not using the detault encoding, so take a bit more care.

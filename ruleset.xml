@@ -55,6 +55,7 @@
         <property name="lineLimit" value="80"/>
         <property name="absoluteLineLimit" value="120"/>
         <property name="ignoreTagLineLength" value="@expectedExceptionCode|@expectedException|@covers"/>
+        <property name="ignoreStartsWithLineLength" value="use"/> <!-- Also an array. Can add more items -->
     </properties>
  </rule>
  
