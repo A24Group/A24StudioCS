@@ -18,6 +18,11 @@ The PSR Coding standards can be found [here](git://github.com/klaussilveira/phpc
  cd /usr/share/php/PHP/CodeSniffer/Standards
  sudo git clone https://github.com/klaussilveira/phpcs-psr PSR
 ```
+If you are not able to get the files from the above repo, then you will need to get them from our chef server.
+
+Browse to chef.dev.net and download the file ```PSR.tar.gz```.
+Extract it inside the directory ```/usr/share/php/PHP/CodeSniffer/Standards```
+
 This will install the PSR coding standards on the system, but will not set them as the default.
 
 # Installation
